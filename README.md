@@ -173,18 +173,17 @@ docker run -p 3000:3000 nellblaise/edusphere:latest
 
 ## 📱 Liens Utiles
 
-- **🐳 Docker Hub** : [nellblaise/edusphere](https://hub.docker.com/r/nellblaise/edusphere)
-- **📦 Repository GitHub** : [EDUSPHERE_UP](https://github.com/nell852/EDUSPHERE_UP.git)
+- **🐳 Docker Hub pour la Version Mobile** : [nellblaise/edusphere](https://hub.docker.com/r/nellblaise/edusphere)
+- **📦 Version Mobile de Lapplication** : [EDUSPHERE_UP](https://github.com/nell852/EDUSPHERE_UP.git)
 - **📚 Documentation** : [Guide Complet](./docs/)
-- **🎬 Démos Vidéo** : [Playlist YouTube](./demos/)
 
 ## 📄 Licence
 
-Ce projet est développé sous licence propriétaire par **Keyce Informatique & IA**.  
-Tous droits réservés © 2024
+Ce projet est développé sous licence propriétaire par **L'Equipe Edusphere**.  
+Tous droits réservés © 2025
 
 ---
 
 **Version** : 2.0.0 - Admin Panel  
-**Dernière mise à jour** : Décembre 2024  
+**Dernière mise à jour** : Juillets 2025  
 **Contact** : equipe@keyce-informatique.fr
