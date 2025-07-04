@@ -5,7 +5,7 @@
 
 ## 📋 Description du Projet
 
-EduSphere est une application d'apprentissage collaboratif complète développée par une équipe de 4 développeurs de **Keyce Informatique & IA**. Cette plateforme révolutionnaire vise à transformer l'éducation en offrant un environnement d'apprentissage interactif, sécurisé et collaboratif pour les étudiants des établissements d'enseignement supérieur.
+EduSphere est une application d'apprentissage collaboratif complète développée par l'équipe Edusphere, Cette plateforme révolutionnaire vise à transformer l'éducation en offrant un environnement d'apprentissage interactif, sécurisé et collaboratif pour les étudiants des établissements d'enseignement supérieur.
 
 Le projet comprend deux composantes principales :
 - **Application Mobile** : Interface utilisateur principale (Android/iOS)
@@ -71,7 +71,6 @@ Le projet comprend deux composantes principales :
 
 ### Intelligence Artificielle
 - **Google Gemini API** pour l'assistance pédagogique
-- **OpenAI GPT** pour la génération de contenu
 - **Modèles spécialisés** pour la résolution d'exercices
 
 ## 📦 Installation et Déploiement
@@ -82,7 +81,7 @@ Le projet comprend deux composantes principales :
 - Compte Supabase
 - Docker (pour les environnements d'ateliers)
 
-### Installation Locale
+### Installation Locale avec git
 
 ```bash
 # Cloner le repository
@@ -149,32 +148,42 @@ docker run -p 3000:3000 nellblaise/edusphere:latest
 - **Stockage de contenu** : 10TB+ de ressources pédagogiques
 - **Temps de réponse** : <200ms pour les requêtes standard
 - **Disponibilité** : 99.9% uptime garanti
-
-### Architecture Cloud
-- **Auto-scaling** : Adaptation automatique à la charge
-- **CDN Global** : Distribution mondiale du contenu
-- **Load Balancing** : Répartition intelligente du trafic
 - **Backup Multi-Zone** : Redondance géographique
 
-## 🤝 Contribution et Support
+## 👥 Notre Équipe de Développement
 
-### Équipe de Développement
-**Keyce Informatique & IA** - Équipe de 4 développeurs spécialisés
-- Backend & Infrastructure
-- Frontend & UX/UI  
-- Mobile & DevOps
-- IA & Data Science
+Ce projet a été développé par l'**Équipe EduSphere** :
 
-### Support Technique
-- **Documentation** : Guide complet développeur
-- **Issues GitHub** : Rapports de bugs et améliorations
-- **Community Forum** : Entraide communautaire
-- **Support Premium** : Assistance dédiée pour les institutions
+* **KENMEUGNE TCHOUPO CALIXTE FRANCK**
+* **MVELE NYOGOG SILVAN NELL BLAISE**
+* **WATONG STENGANG KEVIN DALMA**
+* **FONKOU OUMBE BOOZ MELKI**
+
+## 🔗 Liens Utiles et Conteneurs Associés
+
+### Dépôts GitHub
+
+* **Code Source du Panneau d'Administration (actuel)** : [https://github.com/Franck2040/EDUSPHERE_UP_ADMIN](https://github.com/Franck2040/EDUSPHERE_UP_ADMIN)
+* **Code Source de l'Application Mobile (Frontend Utilisateur)** : [https://github.com/nell852/EDUSPHERE_UP](https://github.com/nell852/EDUSPHERE_UP)
+
+### Image Docker de l'Application cette application et de la version Mobile 
+
+Pour explorer l'interface utilisateur principale côté étudiant, l'image Docker est disponible ici :
+* **Image Docker de l'Application Mobile** : [https://hub.docker.com/r/nellblaise/edusphere](https://hub.docker.com/r/nellblaise/edusphere)
+
+    *Pour la lancer (en utilisant un port différent pour éviter les conflits si le panneau admin est déjà en marche, c'est la meme procédure pour lancer cette partie [admin](https://hub.docker.com/r/franckdev2/edusphere-admin) avec l'image docker) :*
+    ```bash
+    docker pull nellblaise/edusphere:latest
+    docker run -d -p 3000:3000 --name edusphere-mobile nellblaise/edusphere:latest
+    ```
+    *Puis accédez à :* `http://localhost:3000`
 
 ## 📱 Liens Utiles
 
 - **🐳 Docker Hub pour la Version Mobile** : [nellblaise/edusphere](https://hub.docker.com/r/nellblaise/edusphere)
-- **📦 Version Mobile de Lapplication** : [EDUSPHERE_UP](https://github.com/nell852/EDUSPHERE_UP.git)
+- **🐳 Line Dockerhub de ce projet admin** : [franckdev2/edusphere-admin
+](https://hub.docker.com/r/franckdev2/edusphere-admin)
+- **📦 Version Mobile de Lapplication sur Github** : [EDUSPHERE_UP](https://github.com/nell852/EDUSPHERE_UP.git)
 - **📚 Documentation** : [Guide Complet](./docs/)
 
 ## 📄 Licence
@@ -186,4 +195,4 @@ Tous droits réservés © 2025
 
 **Version** : 2.0.0 - Admin Panel  
 **Dernière mise à jour** : Juillets 2025  
-**Contact** : equipe@keyce-informatique.fr
+**Contact** : edusphere745@gmail.com
