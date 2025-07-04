@@ -1,0 +1,515 @@
+
+# 🎨 GUIDE DES STYLES - EduSphere Admin Control
+
+## 🎯 DESIGN SYSTEM & BRANDING
+
+### Palette de couleurs principales
+```css
+/* Couleurs primaires */
+--primary: 222.2 84% 4.9%        /* Noir profond pour le texte */
+--primary-foreground: 210 40% 98% /* Blanc cassé pour contraste */
+
+/* Couleurs secondaires */
+--secondary: 210 40% 96%          /* Gris très clair pour backgrounds */
+--secondary-foreground: 222.2 84% 4.9% /* Texte sur secondaire */
+
+/* Couleurs d'accent */
+--accent: 210 40% 96%             /* Accent subtle */
+--accent-foreground: 222.2 84% 4.9% /* Texte sur accent */
+
+/* États et feedback */
+--destructive: 0 84.2% 60.2%      /* Rouge pour erreurs/suppression */
+--constructive: 142.1 76.2% 36.3% /* Vert pour succès */
+--warning: 47.9 95.8% 53.1%       /* Jaune pour avertissements */
+--info: 221.2 83.2% 53.3%         /* Bleu pour informations */
+```
+
+### Couleurs par domaine/section
+```css
+/* Gestion utilisateurs */
+--users-primary: #3B82F6        /* Bleu */
+--users-secondary: #1E40AF
+--users-light: #DBEAFE
+
+/* Gestion contenu */
+--content-primary: #10B981      /* Vert */
+--content-secondary: #059669
+--content-light: #D1FAE5
+
+/* Communautés */
+--communities-primary: #8B5CF6  /* Violet */
+--communities-secondary: #7C3AED
+--communities-light: #EDE9FE
+
+/* Ateliers */
+--workshops-primary: #F59E0B    /* Orange */
+--workshops-secondary: #D97706
+--workshops-light: #FEF3C7
+
+/* Dashboard */
+--dashboard-primary: #6366F1    /* Indigo */
+--dashboard-secondary: #4F46E5
+--dashboard-light: #E0E7FF
+```
+
+## 📐 TYPOGRAPHIE
+
+### Hiérarchie des titres
+```css
+/* H1 - Titres de pages principales */
+.page-title {
+  font-size: 2.25rem;        /* 36px */
+  font-weight: 700;          /* Bold */
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+}
+
+/* H2 - Titres de sections */
+.section-title {
+  font-size: 1.875rem;       /* 30px */
+  font-weight: 600;          /* Semi-bold */
+  line-height: 1.3;
+  color: var(--foreground);
+}
+
+/* H3 - Sous-titres */
+.subsection-title {
+  font-size: 1.5rem;         /* 24px */
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+
+/* H4 - Titres de cartes */
+.card-title {
+  font-size: 1.25rem;        /* 20px */
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+```
+
+### Corps de texte
+```css
+/* Texte principal */
+.body-text {
+  font-size: 1rem;           /* 16px */
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+/* Texte secondaire */
+.body-secondary {
+  font-size: 0.875rem;       /* 14px */
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+
+/* Texte petit */
+.text-small {
+  font-size: 0.75rem;        /* 12px */
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}
+```
+
+## 🎛️ COMPOSANTS UI
+
+### Boutons
+```css
+/* Bouton primaire */
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: 1px solid var(--primary);
+  border-radius: 0.375rem;    /* 6px */
+  padding: 0.5rem 1rem;       /* 8px 16px */
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background: opacity(var(--primary), 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Bouton secondaire */
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 1px solid var(--border);
+}
+
+/* Bouton destructeur */
+.btn-destructive {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+  border: 1px solid var(--destructive);
+}
+```
+
+### Cartes et conteneurs
+```css
+/* Carte standard */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;     /* 12px */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Carte avec accent */
+.card-accent {
+  border-left: 4px solid var(--primary);
+}
+
+/* Container principal */
+.main-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem;           /* 24px */
+}
+```
+
+### Formulaires
+```css
+/* Champs de saisie */
+.input-field {
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  padding: 0.75rem;          /* 12px */
+  background: var(--background);
+  color: var(--foreground);
+  transition: border-color 0.2s ease-in-out;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(var(--primary), 0.2);
+}
+
+.input-field:error {
+  border-color: var(--destructive);
+}
+
+/* Labels */
+.form-label {
+  font-size: 0.875rem;       /* 14px */
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;     /* 8px */
+}
+```
+
+## 📊 ÉLÉMENTS SPÉCIAUX
+
+### Statistiques et métriques
+```css
+/* Cartes de statistiques */
+.stat-card {
+  background: linear-gradient(135deg, var(--card) 0%, var(--accent) 100%);
+  border: none;
+  border-radius: 1rem;       /* 16px */
+  padding: 1.5rem;           /* 24px */
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-value {
+  font-size: 2.5rem;         /* 40px */
+  font-weight: 700;
+  line-height: 1;
+  color: var(--foreground);
+}
+
+.stat-label {
+  font-size: 0.875rem;       /* 14px */
+  font-weight: 500;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-trend {
+  font-size: 0.75rem;        /* 12px */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;              /* 4px */
+}
+
+.stat-trend.positive {
+  color: var(--constructive);
+}
+
+.stat-trend.negative {
+  color: var(--destructive);
+}
+```
+
+### Tables et listes
+```css
+/* Tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.data-table thead {
+  background: var(--muted);
+}
+
+.data-table th {
+  padding: 1rem;             /* 16px */
+  font-weight: 600;
+  font-size: 0.875rem;       /* 14px */
+  color: var(--muted-foreground);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table td {
+  padding: 1rem;             /* 16px */
+  border-bottom: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.data-table tbody tr:hover {
+  background: var(--accent);
+}
+```
+
+### Badges et indicateurs
+```css
+/* Badge standard */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;     /* Complètement rond */
+  padding: 0.25rem 0.75rem;  /* 4px 12px */
+  font-size: 0.75rem;        /* 12px */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Variantes de badges */
+.badge-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--constructive);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.badge-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--destructive);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.badge-info {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--info);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+```
+
+## 📱 RESPONSIVE DESIGN
+
+### Breakpoints
+```css
+/* Mobile First Approach */
+/* xs: 0px - 639px (mobile) */
+/* sm: 640px - 767px (large mobile) */
+/* md: 768px - 1023px (tablet) */
+/* lg: 1024px - 1279px (laptop) */
+/* xl: 1280px+ (desktop) */
+
+/* Classes utilitaires responsive */
+.responsive-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .responsive-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+```
+
+### Navigation responsive
+```css
+/* Sidebar admin */
+.admin-sidebar {
+  width: 280px;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 1023px) {
+  .admin-sidebar {
+    position: fixed;
+    z-index: 50;
+    transform: translateX(-100%);
+  }
+  
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+}
+```
+
+## 🌊 ANIMATIONS ET TRANSITIONS
+
+### Transitions standard
+```css
+/* Micro-interactions */
+.hover-lift {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Fade in */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Loading spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+```
+
+### Animations de chargement
+```css
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, 
+    var(--muted) 25%, 
+    var(--accent) 50%, 
+    var(--muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Progress bar */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--muted);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.3s ease-in-out;
+}
+```
+
+## 🎭 THÈMES ET MODES
+
+### Mode sombre (Dark mode)
+```css
+/* Variables pour mode sombre */
+[data-theme="dark"] {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --border: 217.2 32.6% 17.5%;
+}
+
+/* Toggle dark mode */
+.theme-toggle {
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+```
+
+## 🔍 GUIDELINES D'UTILISATION
+
+### Espacement cohérent
+- **Marges internes**: 1rem (16px) pour conteneurs, 1.5rem (24px) pour sections
+- **Marges externes**: 0.5rem (8px) entre éléments, 1rem (16px) entre sections
+- **Grid gaps**: 1rem (16px) pour layouts compacts, 1.5rem (24px) pour layouts aérés
+
+### Hiérarchie visuelle
+1. **Couleur**: Primaire pour actions importantes, secondaire pour actions optionnelles
+2. **Taille**: Plus grand = plus important
+3. **Poids**: Bold pour titres, regular pour corps, light pour annotations
+4. **Contraste**: Haut contraste pour éléments critiques
+
+### Accessibilité
+- **Ratio de contraste**: Minimum 4.5:1 pour texte normal, 3:1 pour texte large
+- **Taille de clic**: Minimum 44px x 44px pour éléments interactifs
+- **Focus visible**: Outline distinct sur tous les éléments focusables
+- **Texte alternatif**: Alt text pour toutes les images informatives
+
+---
+
+**📝 Dernière mise à jour**: Décembre 2024  
+**🎨 Design System**: v2.0 - Production Ready  
+**📱 Support**: Mobile-first responsive design  
+**♿ Accessibilité**: WCAG 2.1 AA compliant

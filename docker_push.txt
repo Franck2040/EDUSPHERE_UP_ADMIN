@@ -1,0 +1,363 @@
+
+# 🐳 Guide Docker - Déploiement EduSphere
+
+## Prérequis - Windows 10 64-bit avec WSL
+
+### 1. Vérification de WSL
+```powershell
+# Ouvrir PowerShell en mode Administrateur
+# Vérifier que WSL est installé
+wsl --version
+
+# Si WSL n'est pas installé :
+wsl --install
+# Redémarrer l'ordinateur après installation
+```
+
+### 2. Installation Docker Desktop
+1. Télécharger Docker Desktop pour Windows depuis : https://www.docker.com/products/docker-desktop
+2. Installer avec les options par défaut
+3. S'assurer que "Use WSL 2 instead of Hyper-V" est coché
+4. Redémarrer l'ordinateur après installation
+
+### 3. Configuration Docker avec WSL
+```powershell
+# Vérifier que Docker fonctionne
+docker --version
+# Résultat attendu : Docker version XX.XX.XX
+
+# Tester Docker
+docker run hello-world
+# Résultat attendu : Message de confirmation Docker
+```
+
+## Téléchargement et Préparation du Projet
+
+### 1. Cloner depuis GitHub
+```bash
+# Se positionner dans le dossier Downloads
+cd ~/Downloads
+
+# Cloner le repository EduSphere
+git clone https://github.com/nell852/EDUSPHERE_UP.git
+
+# Entrer dans le dossier du projet
+cd EDUSPHERE_UP
+
+# Vérifier le contenu
+ls -la
+# Résultat attendu : Dockerfile, package.json, src/, etc.
+```
+
+**Que fait cette commande :**
+- `git clone` télécharge tout le code source depuis GitHub
+- Le projet sera dans `~/Downloads/EDUSPHERE_UP/`
+
+**Si la commande échoue :**
+```bash
+# Vérifier la connexion internet
+ping github.com
+
+# Si Git n'est pas installé :
+sudo apt update && sudo apt install git
+
+# Réessayer le clone
+git clone https://github.com/nell852/EDUSPHERE_UP.git
+```
+
+### 2. Exploration du Projet
+```bash
+# Se positionner dans le dossier projet
+cd ~/Downloads/EDUSPHERE_UP
+
+# Voir la structure du projet
+tree -L 2
+# ou
+find . -maxdepth 2 -type d
+
+# Vérifier le Dockerfile
+cat Dockerfile
+# Résultat attendu : Instructions de build Docker
+```
+
+## Construction de l'Image Docker
+
+### 1. Build de l'Image
+```bash
+# Se positionner dans le dossier racine du projet
+cd ~/Downloads/EDUSPHERE_UP
+
+# Construire l'image Docker
+docker build -t edusphere-admin:latest .
+
+# Vérifier que l'image est créée
+docker images | grep edusphere
+# Résultat attendu : edusphere-admin avec tag latest
+```
+
+**Que fait cette commande :**
+- `docker build` créé une image Docker depuis le Dockerfile
+- `-t edusphere-admin:latest` nomme l'image
+- `.` indique que le Dockerfile est dans le dossier actuel
+
+**Si la commande échoue :**
+```bash
+# Vérifier que Docker Desktop est lancé
+docker ps
+# Si erreur "daemon not running", lancer Docker Desktop
+
+# Vérifier l'espace disque
+df -h
+# S'assurer d'avoir au moins 2GB libres
+
+# Nettoyer Docker si nécessaire
+docker system prune -f
+
+# Réessayer le build
+docker build -t edusphere-admin:latest .
+```
+
+### 2. Test Local de l'Image
+```bash
+# Lancer l'application localement
+docker run -d -p 8080:80 --name edusphere-test edusphere-admin:latest
+
+# Vérifier que le conteneur fonctionne
+docker ps
+# Résultat attendu : edusphere-test en cours d'exécution
+
+# Tester l'application
+curl http://localhost:8080
+# ou ouvrir un navigateur sur http://localhost:8080
+```
+
+**Que fait cette commande :**
+- `-d` lance en arrière-plan
+- `-p 8080:80` expose le port 80 du conteneur sur le port 8080 de l'hôte
+- `--name` donne un nom au conteneur
+
+### 3. Arrêt du Test
+```bash
+# Arrêter le conteneur de test
+docker stop edusphere-test
+
+# Supprimer le conteneur de test
+docker rm edusphere-test
+```
+
+## Push vers Docker Hub
+
+### 1. Connexion à Docker Hub
+```bash
+# Se connecter à Docker Hub
+docker login
+
+# Entrer vos identifiants Docker Hub
+# Username: votre_username
+# Password: votre_password
+```
+
+**Si vous n'avez pas de compte Docker Hub :**
+1. Créer un compte sur https://hub.docker.com/
+2. Vérifier votre email
+3. Utiliser ces identifiants pour `docker login`
+
+### 2. Taguer l'Image
+```bash
+# Taguer l'image pour Docker Hub
+docker tag edusphere-admin:latest votre_username/edusphere:latest
+
+# Remplacer "votre_username" par votre nom d'utilisateur Docker Hub
+# Exemple : docker tag edusphere-admin:latest nellblaise/edusphere:latest
+
+# Vérifier les tags
+docker images | grep edusphere
+# Résultat attendu : deux images avec des tags différents
+```
+
+### 3. Push vers Docker Hub
+```bash
+# Pousser l'image vers Docker Hub
+docker push votre_username/edusphere:latest
+
+# Exemple : docker push nellblaise/edusphere:latest
+
+# Vérifier sur Docker Hub
+# L'image devrait apparaître sur https://hub.docker.com/r/votre_username/edusphere
+```
+
+**Que fait cette commande :**
+- Upload l'image Docker sur Docker Hub
+- La rend accessible publiquement
+- Permet à d'autres utilisateurs de la télécharger avec `docker pull`
+
+**Si la commande échoue :**
+```bash
+# Vérifier la connexion
+docker login
+
+# Vérifier la taille de l'image
+docker images | grep edusphere
+# Si >1GB, optimiser le Dockerfile
+
+# Vérifier les quotas Docker Hub
+# Compte gratuit : 1 repo privé, repos publics illimités
+
+# Réessayer le push
+docker push votre_username/edusphere:latest
+```
+
+## Utilisation par d'Autres Utilisateurs
+
+### 1. Pour Télécharger et Utiliser l'Application
+```bash
+# Télécharger l'image depuis Docker Hub
+docker pull nellblaise/edusphere:latest
+
+# Lancer l'application
+docker run -d -p 8080:80 --name edusphere-app nellblaise/edusphere:latest
+
+# Accéder à l'application
+# Ouvrir un navigateur sur http://localhost:8080
+```
+
+### 2. Pour Voir le Code Source
+```bash
+# Méthode 1 : Extraire depuis le conteneur
+docker create --name temp-container nellblaise/edusphere:latest
+docker cp temp-container:/app ./edusphere-source
+docker rm temp-container
+
+# Méthode 2 : Cloner depuis GitHub
+git clone https://github.com/nell852/EDUSPHERE_UP.git
+```
+
+### 3. Pour Modifier et Redéployer
+```bash
+# Cloner le projet
+git clone https://github.com/nell852/EDUSPHERE_UP.git
+cd EDUSPHERE_UP
+
+# Faire vos modifications
+# Modifier les fichiers dans src/, composants, etc.
+
+# Reconstruire l'image
+docker build -t edusphere-custom:latest .
+
+# Tester localement
+docker run -d -p 8080:80 edusphere-custom:latest
+
+# Taguer pour votre Docker Hub
+docker tag edusphere-custom:latest votre_username/edusphere-custom:latest
+
+# Pousser votre version
+docker push votre_username/edusphere-custom:latest
+```
+
+## Hébergement Gratuit Options
+
+### 1. Render.com (Recommandé)
+```bash
+# Créer un compte sur render.com
+# Connecter votre GitHub repository
+# Créer un Web Service avec ces paramètres :
+# - Build Command: docker build -t edusphere .
+# - Start Command: docker run -p 10000:80 edusphere
+```
+
+### 2. Railway.app
+```bash
+# Créer un compte sur railway.app
+# Déployer depuis Docker Hub :
+# - Image: nellblaise/edusphere:latest
+# - Port: 80
+```
+
+### 3. Fly.io
+```bash
+# Installer flyctl
+curl -L https://fly.io/install.sh | sh
+
+# Se connecter
+flyctl auth login
+
+# Dans le dossier du projet
+cd ~/Downloads/EDUSPHERE_UP
+
+# Initialiser l'app Fly
+flyctl launch
+
+# Déployer
+flyctl deploy
+```
+
+## Dépannage Commun
+
+### 1. Erreur "Docker daemon not running"
+```bash
+# Sur Windows : Lancer Docker Desktop
+# Attendre que Docker soit prêt (icône baleine bleue)
+
+# Vérifier
+docker version
+```
+
+### 2. Erreur "Permission denied"
+```bash
+# Ajouter votre utilisateur au groupe docker
+sudo usermod -aG docker $USER
+
+# Se déconnecter et reconnecter
+# ou
+newgrp docker
+```
+
+### 3. Erreur "No space left on device"
+```bash
+# Nettoyer Docker
+docker system prune -a -f
+
+# Supprimer les images inutiles
+docker image prune -a -f
+
+# Supprimer les volumes inutiles
+docker volume prune -f
+```
+
+### 4. Port déjà utilisé
+```bash
+# Voir quel processus utilise le port 8080
+netstat -tulpn | grep 8080
+
+# Utiliser un autre port
+docker run -d -p 8081:80 edusphere-admin:latest
+```
+
+## Commandes Utiles de Maintenance
+
+```bash
+# Voir tous les conteneurs
+docker ps -a
+
+# Voir toutes les images
+docker images
+
+# Arrêter tous les conteneurs
+docker stop $(docker ps -q)
+
+# Supprimer tous les conteneurs arrêtés
+docker container prune -f
+
+# Voir l'utilisation de l'espace Docker
+docker system df
+
+# Logs d'un conteneur
+docker logs nom_du_conteneur
+
+# Entrer dans un conteneur en cours d'exécution
+docker exec -it nom_du_conteneur /bin/bash
+```
+
+---
+
+**Note importante :** Ce guide suppose que vous utilisez WSL2 avec Ubuntu. Les commandes peuvent légèrement varier selon votre distribution Linux dans WSL.
