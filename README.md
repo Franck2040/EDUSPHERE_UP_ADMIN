@@ -1,5 +1,6 @@
-
+<img src="public/logo.png" alt="Edusphere" width="200" />
 # 🎓 EduSphere - Application d'Apprentissage Collaboratif
+
 
 **Cas du Collège de Paris**
 
@@ -19,6 +20,7 @@ Le projet comprend deux composantes principales :
 - **Lecture sécurisée** : Protection anti-copie et anti-capture d'écran
 - **Système d'évaluation** : Avis et recommandations communautaires
 - **Synchronisation** : Lecture cross-platform avec sauvegarde de progression
+<img src="public/Librairie.png" alt="Bibliothèque" width="200" />
 
 ### 🎯 Module Banque d'Épreuves
 - **Sélection par établissement** : 7 institutions supportées
@@ -26,6 +28,7 @@ Le projet comprend deux composantes principales :
 - **Historique complet** : Accès aux épreuves des années antérieures
 - **Assistance IA** : Aide intelligente pour la résolution d'exercices
 - **Notification automatique** : Alerte pour les nouvelles épreuves
+<img src="public/Examens.png" alt="Examens" width="200" />
 
 ### 👥 Module Communauté & Collaboration
 - **Clubs thématiques** : Organisation par domaines d'expertise
@@ -33,6 +36,9 @@ Le projet comprend deux composantes principales :
 - **Environnements de développement** : VSCode, labs cybersécurité, Packet Tracer
 - **Chat en temps réel** : Messagerie multimedia intégrée
 - **Défis communautaires** : Compétitions d'apprentissage
+<img src="public/Communaute.png" alt="Communauté" width="200" />
+
+
 
 ### 👤 Module Profil & Développement
 - **Gestion complète du profil** : Informations personnelles et académiques
@@ -40,6 +46,8 @@ Le projet comprend deux composantes principales :
 - **Génération de CV IA** : CV personnalisés selon le type d'entreprise visé
 - **Historique d'activité** : Suivi des progrès et réalisations
 - **Paramètres de confidentialité** : Contrôle granulaire des données
+<img src="public/profil.png" alt="Profil" width="200" />
+
 
 ### 🛠️ Panneau d'Administration (Version Actuelle)
 - **Gestion des utilisateurs** : CRUD complet, rôles et permissions
@@ -47,6 +55,7 @@ Le projet comprend deux composantes principales :
 - **Modération communautaire** : Surveillance des clubs et ateliers
 - **Analytics avancées** : Statistiques d'utilisation et performance
 - **Configuration système** : Paramètres globaux et sécurité
+<img src="public/admin.png" alt="Admin" width="600" />
 
 ## 🔧 Technologies Utilisées
 
