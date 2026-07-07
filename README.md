@@ -1,8 +1,32 @@
-<img src="public/logo.png" alt="Edusphere" width="200" />
-# 🎓 EduSphere - Application d'Apprentissage Collaboratif
+
+<h1 align="center">
+<img src="public/logo.png" alt="Edusphere" width="25%" />
+</h1>
+
+<p align="center">
+  <strong>🎓 EduSphere - Application d'Apprentissage Collaboratif.</strong><br/>
+Cas du Collège de Paris
+</p>
+
+<p align="center">
+  <!-- React Ecosystem -->
+  <img alt="React Native" src="https://img.shields.io/badge/React_Native-iOS%20%7C%20Android-61DAFB?logo=react&logoColor=white" />
+  <img alt="React 18+" src="https://img.shields.io/badge/React-18%2B-61DAFB?logo=react&logoColor=white" />
+
+  <!-- Backend & Database -->
+  <img alt="Supabase" src="https://img.shields.io/badge/Supabase-PostgreSQL%20%2B%20Auth%20%2B%20Storage%20%2B%20Realtime-3FCF8E?logo=supabase&logoColor=white" />
+
+  <!-- Frontend Tools -->
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white" />
+  <img alt="Vite" src="https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white" />
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss&logoColor=white" />
+  <img alt="Shadcn/UI" src="https://img.shields.io/badge/Shadcn%2FUI-Components-000000?logo=shadcnui&logoColor=white" />
+</p>
+
+---
 
 
-**Cas du Collège de Paris**
+
 
 ## 📋 Description du Projet
 
